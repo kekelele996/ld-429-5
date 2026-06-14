@@ -1,4 +1,5 @@
 import { useRoomStore } from '../../stores/roomStore';
+import { TemplatePanel } from './TemplatePanel';
 
 export function PropertyPanel() {
   const rooms = useRoomStore((state) => state.rooms);
@@ -8,7 +9,7 @@ export function PropertyPanel() {
   const room = rooms.find((item) => item.id === selectedRoomId) ?? rooms[0];
 
   return (
-    <aside className="panel p-5">
+    <aside className="panel max-h-[90vh] overflow-y-auto p-5">
       <h2 className="text-2xl font-semibold">展厅属性</h2>
       <label className="mt-5 block text-sm text-[var(--color-muted)]">
         当前展厅
@@ -43,6 +44,7 @@ export function PropertyPanel() {
           <p className="text-xl">{room.lighting.colorTemperature}K</p>
         </div>
       </div>
+      <TemplatePanel />
     </aside>
   );
 }
